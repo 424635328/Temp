@@ -1,35 +1,34 @@
-name: 💡 Feature Request
-about: 建议新的功能或改进现有功能。
+name: 💡 功能请求 (Feature Request)
+about: 建议新功能或改进现有功能。
 
 labels:
-  - feature request
   - enhancement
-  - needs triage # 标记为需要分类或初步检查
+  - needs triage
 
 body:
   - type: markdown
     attributes:
       value: |
-        欢迎提出新的想法！
+        感谢您花时间提出宝贵的建议，帮助我们改进项目！
 
-        请尽量详细地描述您的功能建议，帮助我们理解其价值和实现方式。
+        一个好的功能请求应该清晰地说明它要解决的问题和它带来的价值。
 
   - type: textarea
-    id: feature
+    id: feature-description
     attributes:
       label: 功能描述
-      description: 请清晰地描述您希望添加或改进的功能。
-      placeholder: 例如：希望在高级菜单中增加一个选项，用于清理旧的本地跟踪分支。
+      description: 请清晰、简洁地描述您希望添加或改进的功能。
+      placeholder: 例如：我希望在用户个人资料页面添加一个“导出数据”的按钮。
       render: markdown
     validations:
       required: true
 
   - type: textarea
-    id: problem
+    id: problem-and-motivation
     attributes:
-      label: 解决什么问题？
-      description: 这个功能解决了用户在使用 git-helper 或 Git 时遇到的什么问题？
-      placeholder: 例如：当我在 Fork/同步很多仓库后，会有很多已经合并或删除的远程分支对应的本地跟踪分支，手动清理很麻烦。
+      label: 问题与动机
+      description: 这个新功能旨在解决什么痛点？为什么它对用户很重要？
+      placeholder: 例如：目前用户无法备份他们的数据，如果他们想迁移到其他服务会非常不便，这降低了用户的安全感和控制权。
       render: markdown
     validations:
       required: true
@@ -37,32 +36,35 @@ body:
   - type: textarea
     id: solution
     attributes:
-      label: 建议的解决方案或实现方式 (可选)
-      description: 您认为这个功能应该如何实现？它会如何融入现有的菜单结构？请提供任何技术细节或实现思路。
-      placeholder: 例如：可以在高级菜单的“分支管理”子菜单下增加一个选项，运行 `git fetch --prune` 后再列出可以安全删除的本地分支，并提供交互式选择删除。
+      label: 建议的解决方案 (可选)
+      description: 如果您对如何实现有任何想法，请在这里分享。例如：API 设计、UI/UX 草图、伪代码等。
+      placeholder: |
+        例如：
+        1. 在个人资料页面右上角添加一个“导出”按钮。
+        2. 点击后，向后端 /api/v1/users/me/export 发起一个 POST 请求。
+        3. 后端生成一个包含用户所有数据的 JSON 文件，并开始下载。
       render: markdown
 
   - type: textarea
     id: alternatives
     attributes:
-      label: 考虑过的其他方案 (可选)
-      description: 您是否考虑过其他方式来解决这个问题？为什么选择这个方案？
+      label: 考虑过的替代方案 (可选)
+      description: 您是否考虑过其他实现方式或替代方案？为什么当前建议是最好的？
       render: markdown
 
   - type: textarea
     id: additional-context
     attributes:
       label: 其他上下文信息 (可选)
-      description: 任何其他有助于理解您的建议的信息。
-      render: markdown
+      description: 任何其他有助于我们理解您建议的信息，例如相关项目的链接、截图或设计稿。
 
   - type: checkboxes
     id: confirmation
     attributes:
       label: 确认事项
-      description: 请确认您已完成以下事项：
+      description: 在提交之前，请确认您已完成以下操作。
       options:
-        - label: 我已搜索了现有的问题和已关闭的 Pull Request，没有发现类似的建议。
+        - label: 我已在现有的 Issues 中搜索，没有发现重复的功能请求。
           required: true
-        - label: 我已阅读并理解了项目的贡献指南 (CONTRIBUTING.md，如果存在的话)。
-          required: true
+        - label: 我已阅读并理解了项目的贡献指南 (CONTRIBUTING.md)。
+          required: false # 设为可选，因为并非所有项目都有此文件
